@@ -1,93 +1,102 @@
-# Groupe de gueneb_a 1054973
+# STAGEOO
+# Objectifs :
+Installer et configurer Docker
+Créer et lancer des conteneurs via des lignes de commande
 
+# Attention :
+Sur Linux, ou d'autres systèmes basés sur UNIX, des problèmes liés aux droits de Docker peuvent être rencontrés. Voici les plus fréquents :
 
+Problème de droits : Lien vers la documentation
+Problème de service non activé : sudo systemctl enable docker
+Problème de service non démarré : sudo systemctl start docker
+Consignes
+Vous devez créer un script bash qui créera et lancera un conteneur Docker en arrière-plan à partir du Dockerfile.
 
-## Getting started
+Le nom de l'image, le port de la machine hôte et le port du conteneur seront configurables via des paramètres d'entrée.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+# Ressources :
+Vous trouverez un Dockerfile, app.py et requirements.txt dans les ressources liées au projet.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Le Dockerfile contient les instructions pour la construction de l'image.
 
-## Add your files
+Les fichiers app.py et requirements.txt sont nécessaires pour faire tourner votre application dans le conteneur.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+Vous ne devrez pas les rendre.
 
-```
-cd existing_repo
-git remote add origin https://rendu-git.etna-alternance.net/module-9957/activity-53469/group-1054973.git
-git branch -M main
-git push -uf origin main
-```
+# En pratique :
+Vous devriez lancer votre programme ainsi:
 
-## Integrate with your tools
+./create-and-run-container.sh IMAGE_NAME HOST_PORT CONTAINER_PORT
 
-- [ ] [Set up project integrations](https://rendu-git.etna-alternance.net/module-9957/activity-53469/group-1054973/-/settings/integrations)
+# STAGE01
+# Objectifs:
+Arrêter les conteneurs lancés en utilisant des lignes de commande
 
-## Collaborate with your team
+# Consignes :
+Vous devez créer un script bash qui arrêtera un ou plusieurs conteneurs Docker. Les IDs des conteneurs seront passés via des paramètres d'entrée.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+En pratique
+Vous devriez lancer votre script ainsi :
 
-## Test and Deploy
+./stop-container.sh CONTAINER_ID [CONTAINER_IDS...]
+Bonus
+Ajouter une option de lancement -a / --all qui supprime tout les conteneurs:
 
-Use the built-in continuous integration in GitLab.
+./stop-container.sh [-a|--all]
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+# STAGE02
+# Objectifs :
+Supprimer les conteneurs créés en utilisant des lignes de commande
 
-***
+# Consignes :
+Vous devez créer un script bash qui supprimera un ou plusieurs conteneurs Docker.
 
-# Editing this README
+Les ID des conteneurs seront passés via des paramètres d'entrée.
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+# En pratique :
+Vous devriez lancer votre programme ainsi :
 
-## Suggestions for a good README
+./delete-container.sh CONTAINER_ID [CONTAINER_IDS...]
+Bonus
+Ajouter une option de lancement -a / --all qui supprime tout les conteneurs:
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+./delete-container.sh [-a|--all]
 
-## Name
-Choose a self-explaining name for your project.
+# STAGE03
+# Objectifs :
+Supprimer les images créées en utilisant des lignes de commande
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+# Consignes :
+Vous devez créer un script bash qui supprimera une ou plusieurs images Docker.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+Les noms des images seront passés via des paramètres d'entrée.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+# En pratique :
+Vous devriez lancer votre programme ainsi :
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+./delete-image.sh IMAGE_NAME [IMAGE_NAMES...]
+Bonus
+Ajouter une option de lancement -a / --all qui supprime toutes les images :
+./delete-image.sh [-a|--all]
+Ajouter un regex dans les noms d'images :
+./delete-image.sh etna* #Supprime toutes les images qui commencent par "etna"
+./delete-image.sh *etna #Supprime tout les images qui finissent par "etna"
+./delete-image.sh *etna* #Supprime tout les images qui contiennent "etna"
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+# STAGE04
+# Objectifs :
+Écrire un Dockerfile qui lance une application Node.js
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+# Consignes :
+Vous devez créer un Dockerfile qui:
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+Sera basé sur Node.js 23
+Installera les dépendances
+Lancera le fichier app.js
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+# Ressources :
+Vous trouverez un fichier app.js et un fichier package.json dans les ressources liées au projet.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+Ces fichiers, app.js et package.json, sont nécessaires pour faire tourner votre application dans le conteneur.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Vous ne devrez pas les rendre.
