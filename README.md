@@ -1,4 +1,4 @@
-# STAGEOO
+# STAGE00
 # Objectifs :
 Installer et configurer Docker
 Créer et lancer des conteneurs via des lignes de commande
